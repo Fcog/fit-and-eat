@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fit &amp; Eat — Train well. Eat well.</title>
+<style>
+  :root{
+    --ink:#16241c; --muted:#5b6b61; --bg:#f7f4ec; --card:#ffffff;
+    --green:#1f5e3b; --green-2:#2f8a57; --lime:#c9e86b; --tomato:#e8573a; --line:#e3ddcd;
+    --radius:20px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+  h1,h2,h3{line-height:1.1;letter-spacing:-.02em}
+  .eyebrow{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green-2)}
+  .btn{display:inline-block;padding:14px 24px;border-radius:999px;font-weight:600;font-size:15px;transition:transform .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:var(--green);color:#fff}
+  .btn-ghost{border:1.5px solid var(--ink)}
+
+  /* Nav */
+  nav{position:sticky;top:0;z-index:10;background:rgba(247,244,236,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{font-weight:800;font-size:22px;display:flex;align-items:center;gap:8px}
+  .logo i{width:28px;height:28px;border-radius:8px;background:var(--green);display:grid;place-items:center;color:var(--lime);font-style:normal;font-size:15px}
+  .links{display:flex;gap:28px;font-size:15px;color:var(--muted)}
+  .links a:hover{color:var(--ink)}
+
+  /* Hero */
+  .hero{padding:72px 0 56px}
+  .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+  .hero h1{font-size:clamp(40px,6vw,68px);margin:14px 0 20px}
+  .hero h1 em{font-style:normal;color:var(--tomato)}
+  .hero p.lead{font-size:19px;color:var(--muted);max-width:520px;margin-bottom:30px}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+  .proof{margin-top:28px;font-size:14px;color:var(--muted)}
+  .proof b{color:var(--ink)}
+
+  /* Phone mockup */
+  .phone{width:300px;margin:0 auto;background:#0f1a14;border-radius:44px;padding:12px;box-shadow:0 30px 60px -20px rgba(22,36,28,.45)}
+  .screen{background:var(--bg);border-radius:34px;padding:22px 16px;min-height:560px}
+  .screen .hi{font-size:13px;color:var(--muted)}
+  .screen .hi b{display:block;font-size:20px;color:var(--ink)}
+  .rings{display:flex;gap:10px;margin:16px 0}
+  .ring{flex:1;min-width:0;background:#fff;border-radius:16px;padding:10px 4px;text-align:center;font-size:11px;color:var(--muted)}
+  .ring .dial{width:54px;height:54px;border-radius:50%;margin:0 auto 6px;display:grid;place-items:center;font-weight:700;font-size:13px;color:var(--ink)}
+  .ring .dial span{width:42px;height:42px;border-radius:50%;background:#fff;display:grid;place-items:center}
+  .d1{background:conic-gradient(var(--green-2) 0 72%,#e8efe9 0)}
+  .d2{background:conic-gradient(var(--tomato) 0 58%,#f6e3dd 0)}
+  .d3{background:conic-gradient(#3b82c4 0 85%,#e1ecf6 0)}
+  .mini{background:#fff;border-radius:16px;padding:14px;margin-bottom:10px;display:flex;gap:12px;align-items:center}
+  .mini .thumb{width:52px;height:52px;border-radius:12px;flex-shrink:0}
+  .mini small{font-size:11px;color:var(--muted);display:block}
+  .mini strong{font-size:14px}
+  .tag{display:inline-block;font-size:10px;font-weight:700;padding:3px 8px;border-radius:999px;background:var(--lime);color:var(--green);margin-top:4px}
+
+  /* Food "photos" drawn in CSS */
+  .bowl{background:radial-gradient(circle at 35% 35%,#f4d35e 0 14%,transparent 15%),radial-gradient(circle at 65% 40%,#e8573a 0 13%,transparent 14%),radial-gradient(circle at 45% 68%,#5fae5c 0 18%,transparent 19%),radial-gradient(circle at 70% 70%,#f2efe6 0 12%,transparent 13%),radial-gradient(circle,#8a5a3c 0 60%,#f7f4ec 61%)}
+  .smoothie{background:radial-gradient(circle at 40% 40%,#c9e86b 0 10%,transparent 11%),radial-gradient(circle at 62% 55%,#3b2a6b 0 9%,transparent 10%),radial-gradient(circle,#c2477a 0 60%,#fbe9ef 61%)}
+  .salmon{background:radial-gradient(ellipse 30% 18% at 50% 42%,#f08a5d 0 98%,transparent 100%),radial-gradient(circle at 35% 68%,#2f8a57 0 12%,transparent 13%),radial-gradient(circle at 62% 70%,#f4d35e 0 10%,transparent 11%),radial-gradient(circle,#ffffff 0 60%,#e6eef3 61%)}
+  .run{background:linear-gradient(135deg,var(--green) 0,var(--green-2) 100%);display:grid;place-items:center;color:var(--lime);font-weight:800;font-size:18px}
+
+  /* Stats */
+  .stats{background:var(--green);color:#fff;padding:36px 0}
+  .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+  .stats b{display:block;font-size:34px;color:var(--lime)}
+  .stats span{font-size:14px;opacity:.85}
+
+  section.block{padding:88px 0}
+  .head{max-width:640px;margin-bottom:44px}
+  .head h2{font-size:clamp(30px,4vw,44px);margin-top:10px}
+  .head p{color:var(--muted);font-size:17px;margin-top:12px}
+
+  /* Features */
+  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .feature{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px}
+  .feature .icon{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:22px;margin-bottom:18px;font-weight:800}
+  .feature h3{font-size:21px;margin-bottom:8px}
+  .feature p{color:var(--muted);font-size:15px}
+
+  /* Pairing */
+  .pair{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:stretch}
+  .pcard{background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
+  .pcard .art{height:200px}
+  .pcard .body{padding:24px}
+  .pcard h3{font-size:22px;margin:6px 0 10px}
+  .pcard ul{list-style:none;display:flex;gap:16px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+  .pcard ul b{color:var(--ink)}
+  .plus{display:grid;place-items:center;font-size:34px;font-weight:300;color:var(--green-2)}
+  .workout-art{background:linear-gradient(135deg,#1f5e3b,#2f8a57);position:relative;color:#fff;padding:24px;display:flex;flex-direction:column;justify-content:flex-end}
+  .workout-art .moves{display:flex;gap:6px;flex-wrap:wrap}
+  .workout-art .moves span{background:rgba(255,255,255,.15);padding:6px 10px;border-radius:999px;font-size:12px}
+
+  /* Recipes */
+  .recipes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .recipe{background:var(--card);border-radius:var(--radius);border:1px solid var(--line);overflow:hidden;transition:transform .2s,box-shadow .2s}
+  .recipe:hover{transform:translateY(-4px);box-shadow:0 18px 36px -18px rgba(22,36,28,.3)}
+  .recipe .art{height:190px;display:grid;place-items:center;background:#efe9da}
+  .recipe .art div{width:150px;height:150px;border-radius:50%}
+  .recipe .body{padding:20px 22px 24px}
+  .recipe h3{font-size:19px;margin:6px 0 12px}
+  .macros{display:flex;gap:8px;flex-wrap:wrap}
+  .macros span{font-size:12px;padding:5px 10px;border-radius:999px;background:var(--bg);border:1px solid var(--line)}
+  .macros .k{background:var(--lime);border-color:var(--lime);color:var(--green);font-weight:700}
+
+  /* Testimonial */
+  .quote{background:var(--ink);color:#fff;border-radius:28px;padding:56px;display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center}
+  .avatar{width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,var(--tomato),#f4d35e);display:grid;place-items:center;font-size:32px;font-weight:800}
+  .quote blockquote{font-size:24px;line-height:1.4;font-weight:500}
+  .quote cite{display:block;margin-top:14px;font-style:normal;font-size:14px;opacity:.7}
+
+  /* CTA */
+  .cta{text-align:center;background:var(--lime);border-radius:28px;padding:64px 24px}
+  .cta h2{font-size:clamp(30px,4vw,46px);color:var(--green)}
+  .cta p{margin:12px 0 26px;color:var(--green)}
+
+  footer{padding:40px 0;color:var(--muted);font-size:14px}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid var(--line);padding-top:28px}
+
+  @media (max-width:900px){
+    .hero .wrap,.pair{grid-template-columns:1fr}
+    .features,.recipes{grid-template-columns:1fr}
+    .stats .wrap{grid-template-columns:repeat(2,1fr)}
+    .links{display:none}
+    .plus{display:none}
+    .quote{grid-template-columns:1fr;padding:36px;text-align:center}
+    .avatar{margin:0 auto}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#"><i>F</i>Fit &amp; Eat</a>
+    <div class="links">
+      <a href="#features">Features</a>
+      <a href="#today">Today's plan</a>
+      <a href="#recipes">Recipes</a>
+      <a href="#stories">Stories</a>
+    </div>
+    <a class="btn btn-primary" href="build-my-plan.html">Start free</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Workouts + recipes, in one app</span>
+      <h1>Move better.<br>Eat smarter.<br><em>Feel the difference.</em></h1>
+      <p class="lead">Fit &amp; Eat builds your weekly training plan and pairs every session with recipes that fuel it, so you never have to wonder what to do or what to cook.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="build-my-plan.html">Get my free plan</a>
+        <a class="btn btn-ghost" href="#recipes">Browse recipes</a>
+      </div>
+      <p class="proof"><b>4.8 ★</b> from 12,000+ reviews &nbsp;·&nbsp; No credit card needed</p>
+    </div>
+
+    <div class="phone" aria-hidden="true">
+      <div class="screen">
+        <div class="hi">Good morning<b>Ready, Sam?</b></div>
+        <div class="rings">
+          <div class="ring"><div class="dial d1"><span>72%</span></div>Move</div>
+          <div class="ring"><div class="dial d2"><span>1.4k</span></div>kcal</div>
+          <div class="ring"><div class="dial d3"><span>6/8</span></div>Water</div>
+        </div>
+        <div class="mini"><div class="thumb run">HIIT</div><div><small>Workout · 25 min</small><strong>Full-body burn</strong><br><span class="tag">Up next</span></div></div>
+        <div class="mini"><div class="thumb smoothie"></div><div><small>Pre-workout · 5 min</small><strong>Berry oat smoothie</strong></div></div>
+        <div class="mini"><div class="thumb bowl"></div><div><small>Lunch · 15 min</small><strong>Power grain bowl</strong></div></div>
+        <div class="mini"><div class="thumb salmon"></div><div><small>Dinner · 25 min</small><strong>Lemon herb salmon</strong></div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="stats">
+  <div class="wrap">
+    <div><b>500+</b><span>guided workouts</span></div>
+    <div><b>1,200</b><span>healthy recipes</span></div>
+    <div><b>250k</b><span>active members</span></div>
+    <div><b>15 min</b><span>average cook time</span></div>
+  </div>
+</div>
+
+<section class="block" id="features">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">How it works</span>
+      <h2>Training and nutrition that finally talk to each other</h2>
+      <p>Your workouts shape your meals, and your meals power your workouts. One plan, one app.</p>
+    </div>
+    <div class="features">
+      <div class="feature">
+        <div class="icon" style="background:#e3f0e7;color:var(--green)">↑</div>
+        <h3>Train your way</h3>
+        <p>Strength, HIIT, yoga and running plans from 10 to 60 minutes. At home or at the gym, with or without equipment.</p>
+      </div>
+      <div class="feature">
+        <div class="icon" style="background:#fbe5df;color:var(--tomato)">◐</div>
+        <h3>Eat to match</h3>
+        <p>Recipes chosen for each day's effort: more protein after strength days, smart carbs before cardio. Grocery list included.</p>
+      </div>
+      <div class="feature">
+        <div class="icon" style="background:#eef6d4;color:#5c7a12">✓</div>
+        <h3>See progress</h3>
+        <p>Track workouts, meals, water and sleep in one simple dashboard. Celebrate streaks and adjust your plan as you improve.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="today" style="padding-top:0">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Today's pairing</span>
+      <h2>One workout. One meal. Built to work together.</h2>
+    </div>
+    <div class="pair">
+      <article class="pcard">
+        <div class="art workout-art">
+          <div class="moves"><span>Squat jumps</span><span>Push-ups</span><span>Mountain climbers</span><span>Plank</span></div>
+        </div>
+        <div class="body">
+          <span class="eyebrow">Workout</span>
+          <h3>25-min Full-Body HIIT</h3>
+          <ul><li><b>25</b> min</li><li><b>~320</b> kcal</li><li><b>No</b> equipment</li><li>Intermediate</li></ul>
+        </div>
+      </article>
+      <div class="plus">+</div>
+      <article class="pcard">
+        <div class="art" style="background:#efe9da;display:grid;place-items:center"><div class="bowl" style="width:150px;height:150px;border-radius:50%"></div></div>
+        <div class="body">
+          <span class="eyebrow" style="color:var(--tomato)">Recovery meal</span>
+          <h3>Power Grain Bowl</h3>
+          <ul><li><b>15</b> min</li><li><b>540</b> kcal</li><li><b>32 g</b> protein</li><li>Vegetarian</li></ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="recipes" style="background:#efe9da">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Featured recipes</span>
+      <h2>Healthy food that actually tastes good</h2>
+      <p>Every recipe shows calories and macros, and scales to your goals.</p>
+    </div>
+    <div class="recipes">
+      <article class="recipe">
+        <div class="art"><div class="smoothie"></div></div>
+        <div class="body">
+          <span class="eyebrow">Breakfast · 5 min</span>
+          <h3>Berry Oat Protein Smoothie</h3>
+          <div class="macros"><span class="k">310 kcal</span><span>24 g protein</span><span>42 g carbs</span><span>6 g fat</span></div>
+        </div>
+      </article>
+      <article class="recipe">
+        <div class="art"><div class="bowl"></div></div>
+        <div class="body">
+          <span class="eyebrow">Lunch · 15 min</span>
+          <h3>Power Grain Bowl with Tahini</h3>
+          <div class="macros"><span class="k">540 kcal</span><span>32 g protein</span><span>58 g carbs</span><span>18 g fat</span></div>
+        </div>
+      </article>
+      <article class="recipe">
+        <div class="art"><div class="salmon"></div></div>
+        <div class="body">
+          <span class="eyebrow">Dinner · 25 min</span>
+          <h3>Lemon Herb Salmon &amp; Greens</h3>
+          <div class="macros"><span class="k">480 kcal</span><span>38 g protein</span><span>22 g carbs</span><span>24 g fat</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="stories">
+  <div class="wrap">
+    <div class="quote">
+      <div class="avatar">M</div>
+      <div>
+        <blockquote>“I used to plan workouts in one app and meals in another. Fit &amp; Eat put it all together, and I've stuck with it for six months.”</blockquote>
+        <cite>Maya R. · Member since 2025 · Lost 8 kg, gained a 5K PR</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="start" style="padding-bottom:72px">
+  <div class="wrap">
+    <div class="cta">
+      <h2>Your first week is on us</h2>
+      <p>Answer 5 quick questions and get a personalized workout + meal plan in under a minute.</p>
+      <a class="btn btn-primary" href="build-my-plan.html">Build my plan</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span><b style="color:var(--ink)">Fit &amp; Eat</b> · © 2026 · Demo homepage</span>
+    <span>About · Recipes · Workouts · Privacy</span>
+  </div>
+</footer>
+
+</body>
+</html>
