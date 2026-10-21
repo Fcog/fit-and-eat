@@ -1,0 +1,6 @@
+[build]
+  # Plain HTML site: publish the folder as-is, no build step needed.
+  publish = "."
+
+[functions]
+  directory = "netlify/functions"
