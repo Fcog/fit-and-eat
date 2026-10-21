@@ -1,6 +1,10 @@
 [build]
-  # Plain HTML site: publish the folder as-is, no build step needed.
-  publish = "."
+  # Eleventy builds the English, German and Dutch pages into _site/
+  command = "npm run build"
+  publish = "_site"
+
+[build.environment]
+  NODE_VERSION = "22"
 
 [functions]
   directory = "netlify/functions"

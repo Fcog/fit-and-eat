@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="{{ logoSize or 72 }}" height="{{ logoSize or 72 }}" role="img" aria-label="{{ 'Fit & Eat logo' | t(lang.code) }}">
+  <defs>
+    <path id="rimTop" d="M 26,100 A 74,74 0 0 1 174,100"/>
+    <path id="rimBottom" d="M 12,100 A 88,88 0 0 0 188,100"/>
+  </defs>
+
+  <!-- Plate rim -->
+  <circle cx="100" cy="100" r="97" fill="#1f5e3b"/>
+  <circle cx="100" cy="100" r="93" fill="none" stroke="#2f8a57" stroke-width="1.5"/>
+
+  <!-- Text on the rim -->
+  <text font-family="'Snell Roundhand', 'Segoe Script', 'Brush Script MT', 'Apple Chancery', cursive" font-size="25" font-weight="700" fill="#ffffff">
+    <textPath href="#rimTop" startOffset="50%" text-anchor="middle">Fit &amp; Eat</textPath>
+  </text>
+  <text font-family="'Snell Roundhand', 'Segoe Script', 'Brush Script MT', 'Apple Chancery', cursive" font-size="15" font-weight="700" fill="#c9e86b">
+    <textPath href="#rimBottom" startOffset="50%" text-anchor="middle">{{ "30 min a day" | t(lang.code) }}</textPath>
+  </text>
+  <circle cx="18" cy="100" r="3" fill="#c9e86b"/>
+  <circle cx="182" cy="100" r="3" fill="#c9e86b"/>
+
+  <!-- Plate well -->
+  <circle cx="100" cy="100" r="67" fill="#f7f4ec"/>
+  <circle cx="100" cy="100" r="58" fill="none" stroke="#e3ddcd" stroke-width="1.2"/>
+
+  <!-- 30-minute progress (12 to 6) -->
+  <path d="M100,37 A63,63 0 0 1 100,163" fill="none" stroke="#e8573a" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Clock ticks -->
+  <g stroke="#16241c" stroke-linecap="round">
+    <line x1="100" y1="44" x2="100" y2="52" stroke-width="3"/>
+    <line x1="100" y1="148" x2="100" y2="156" stroke-width="3"/>
+    <line x1="44" y1="100" x2="52" y2="100" stroke-width="3"/>
+    <line x1="148" y1="100" x2="156" y2="100" stroke-width="3"/>
+    <g stroke-width="1.6" opacity=".55">
+      <line x1="100" y1="46" x2="100" y2="51" transform="rotate(30 100 100)"/>
+      <line x1="100" y1="46" x2="100" y2="51" transform="rotate(60 100 100)"/>
+      <line x1="100" y1="46" x2="100" y2="51" transform="rotate(120 100 100)"/>
+      <line x1="100" y1="46" x2="100" y2="51" transform="rotate(150 100 100)"/>
+      <line x1="100" y1="46" x2="100" y2="51" transform="rotate(210 100 100)"/>
+      <line x1="100" y1="46" x2="100" y2="51" transform="rotate(240 100 100)"/>
+      <line x1="100" y1="46" x2="100" y2="51" transform="rotate(300 100 100)"/>
+      <line x1="100" y1="46" x2="100" y2="51" transform="rotate(330 100 100)"/>
+    </g>
+  </g>
+
+  <!-- Spoon = minute hand (pointing to 12) -->
+  <g fill="#16241c">
+    <rect x="97.8" y="66" width="4.4" height="36" rx="2.2"/>
+    <ellipse cx="100" cy="58" rx="7.5" ry="11"/>
+  </g>
+
+  <!-- Fork = hour hand (pointing to 3) -->
+  <g fill="#16241c" transform="rotate(90 100 100)">
+    <rect x="97.6" y="80" width="4.8" height="22" rx="2.4"/>
+    <path d="M92.5 66 L92.5 76 Q92.5 82 100 82 Q107.5 82 107.5 76 L107.5 66 L105.6 66 L105.6 75 L103.2 75 L103.2 64 L101.2 64 L101.2 75 L98.8 75 L98.8 64 L96.8 64 L96.8 75 L94.4 75 L94.4 66 Z"/>
+  </g>
+
+  <!-- Center cap -->
+  <circle cx="100" cy="100" r="5.5" fill="#e8573a"/>
+  <circle cx="100" cy="100" r="2" fill="#f7f4ec"/>
+</svg>

@@ -1,0 +1,312 @@
+---
+pagination:
+  data: languages
+  size: 1
+  alias: lang
+permalink: "{{ lang.prefix }}index.html"
+layout: layouts/base.njk
+title: "Fit & Eat — 30 minutes a day. Stronger at every age."
+pageFile: ""
+css: home
+nav: true
+navButton: "sample"
+footer: "full"
+---
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">{{ "Strength & nutrition for 40+" | t(lang.code) }}</span>
+      <h1>{{ "30 minutes a day." | t(lang.code) }}<br><em>{{ "Stronger at every age." | t(lang.code) }}</em></h1>
+      <p class="lead">{{ "Joint-friendly strength workouts, paired with high-protein meals that match how hard you trained. Busy day? Every session also comes in a 20 and a 10-minute version." | t(lang.code) }}</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="{{ lang.prefix }}build-my-plan.html">{{ "Get my free sample week" | t(lang.code) }}</a>
+        <a class="btn btn-ghost" href="#how">{{ "See how it works" | t(lang.code) }}</a>
+      </div>
+      <div class="proof">
+        <span>{{ "No equipment needed" | t(lang.code) }}</span>
+        <span>{{ "No calorie counting" | t(lang.code) }}</span>
+        <span>{{ "Printable plan + shopping list" | t(lang.code) }}</span>
+      </div>
+    </div>
+
+    <div class="phone" aria-hidden="true">
+      <div class="screen">
+        <div class="hi">{{ "Monday · Week 3" | t(lang.code) }}<b>{{ "Today: Strength" | t(lang.code) }}</b></div>
+        <div class="today">
+          <small>{{ "Legs & glutes · low impact" | t(lang.code) }}</small>
+          <strong>{{ "Lower-body strength" | t(lang.code) }}</strong>
+          <div class="lengths"><span>{{ "10 min" | t(lang.code) }}</span><span>{{ "20 min" | t(lang.code) }}</span><span class="on">{{ "30 min" | t(lang.code) }}</span></div>
+        </div>
+        <div class="link-arrow">{{ "Hard leg day →" | t(lang.code) }} <b>{{ "higher-protein dinner" | t(lang.code) }}</b></div>
+        <div class="mini"><div class="thumb quark"></div><div><small>{{ "Breakfast · 5 min" | t(lang.code) }}</small><strong>{{ "Quark bowl with berries" | t(lang.code) }}</strong><span class="tag t-high">{{ "28 g protein" | t(lang.code) }}</span></div></div>
+        <div class="mini"><div class="thumb bowl"></div><div><small>{{ "Dinner · 20 min" | t(lang.code) }}</small><strong>{{ "Chicken & lentil pan" | t(lang.code) }}</strong><span class="tag t-high">{{ "42 g protein" | t(lang.code) }}</span></div></div>
+        <div class="swap">{{ "Knee feels off?" | t(lang.code) }} <b>{{ "Swap lunges → glute bridges" | t(lang.code) }}</b></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="wrap">
+    <div><b>10 · 20 · 30</b><span>{{ "minutes, you choose daily" | t(lang.code) }}</span></div>
+    <div><b>3×</b><span>{{ "strength sessions a week" | t(lang.code) }}</span></div>
+    <div><b>{{ "60 sec" | t(lang.code) }}</b><span>{{ "weekly check-in" | t(lang.code) }}</span></div>
+    <div><b>0</b><span>{{ "calories to count" | t(lang.code) }}</span></div>
+  </div>
+</div>
+
+<!-- Science angle -->
+<section class="block">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">{{ "Why strength + protein" | t(lang.code) }}</span>
+      <h2>{{ "After 40, muscle is the thing worth protecting" | t(lang.code) }}</h2>
+      <p>{{ "We gradually lose muscle as we age, and it affects strength, balance and everyday energy. Research consistently points to the same two levers. Fit & Eat is built around both." | t(lang.code) }}</p>
+    </div>
+    <div class="science">
+      <div class="sci">
+        <div class="big">1</div>
+        <h3>{{ "Resistance training, done regularly" | t(lang.code) }}</h3>
+        <p>{{ "Three short strength sessions a week, using your own body weight. Low impact, joint-friendly, and progressed gradually as you get stronger." | t(lang.code) }}</p>
+      </div>
+      <div class="sci">
+        <div class="big">2</div>
+        <h3>{{ "Enough protein, spread across the day" | t(lang.code) }}</h3>
+        <p>{{ "Every recipe shows its protein. Meals are planned so protein goes up on the days your muscles need it most, without supplements or shakes." | t(lang.code) }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Logic -->
+<section class="block" id="how" style="padding-top:0">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">{{ "How it works" | t(lang.code) }}</span>
+      <h2>{{ "Your meals follow your workout, not the calendar" | t(lang.code) }}</h2>
+      <p>{{ "Every workout has an intensity and a muscle focus. Your meals adjust to it automatically." | t(lang.code) }}</p>
+    </div>
+    <div class="rules">
+      <div class="rule">
+        <div class="side"><small>{{ "If today is" | t(lang.code) }}</small><b>{{ "Heavy strength (legs, full body)" | t(lang.code) }}</b><p>{{ "Larger muscles worked, longer recovery" | t(lang.code) }}</p></div>
+        <div class="arrow">→</div>
+        <div class="side"><small>{{ "Your meals become" | t(lang.code) }}</small><b>{{ "Higher protein + more carbs" | t(lang.code) }}</b><p>{{ "e.g. chicken & lentil pan, potatoes with quark" | t(lang.code) }}</p></div>
+      </div>
+      <div class="rule">
+        <div class="side"><small>{{ "If today is" | t(lang.code) }}</small><b>{{ "Low-impact cardio or mobility" | t(lang.code) }}</b><p>{{ "Moderate effort, joints and heart" | t(lang.code) }}</p></div>
+        <div class="arrow">→</div>
+        <div class="side"><small>{{ "Your meals become" | t(lang.code) }}</small><b>{{ "Balanced" | t(lang.code) }}</b><p>{{ "e.g. salmon, wholegrain rice and vegetables" | t(lang.code) }}</p></div>
+      </div>
+      <div class="rule">
+        <div class="side"><small>{{ "If today is" | t(lang.code) }}</small><b>{{ "Walk or rest day" | t(lang.code) }}</b><p>{{ "Recovery and stretching" | t(lang.code) }}</p></div>
+        <div class="arrow">→</div>
+        <div class="side"><small>{{ "Your meals become" | t(lang.code) }}</small><b>{{ "Lighter, protein stays steady" | t(lang.code) }}</b><p>{{ "e.g. Abendbrot plate with smoked trout and cottage cheese" | t(lang.code) }}</p></div>
+      </div>
+    </div>
+    <p class="note">{{ "Plans come from fixed rules applied to our own reviewed exercises and recipes, so nothing is improvised." | t(lang.code) }}</p>
+  </div>
+</section>
+
+<!-- Week -->
+<section class="block" id="week" style="background:var(--sand)">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">{{ "Your week" | t(lang.code) }}</span>
+      <h2>{{ "The same rhythm every week, so it becomes a habit" | t(lang.code) }}</h2>
+      <p>{{ "A predictable structure is easier to stick to. Pick 10, 20 or 30 minutes each day. Showing up matters more than going all out." | t(lang.code) }}</p>
+    </div>
+    <div class="week">
+      <div class="day strength"><span class="d">{{ "Mon" | t(lang.code) }}</span><b>{{ "Strength" | t(lang.code) }}<br>{{ "Lower body" | t(lang.code) }}</b><span class="tag t-high">{{ "High protein" | t(lang.code) }}</span><div class="bar"><i style="width:90%"></i></div></div>
+      <div class="day cardio"><span class="d">{{ "Tue" | t(lang.code) }}</span><b>{{ "Low-impact cardio" | t(lang.code) }}</b><span class="tag t-bal">{{ "Balanced" | t(lang.code) }}</span><div class="bar"><i style="width:60%"></i></div></div>
+      <div class="day strength"><span class="d">{{ "Wed" | t(lang.code) }}</span><b>{{ "Strength" | t(lang.code) }}<br>{{ "Upper body" | t(lang.code) }}</b><span class="tag t-high">{{ "High protein" | t(lang.code) }}</span><div class="bar"><i style="width:80%"></i></div></div>
+      <div class="day cardio"><span class="d">{{ "Thu" | t(lang.code) }}</span><b>{{ "Mobility & balance" | t(lang.code) }}</b><span class="tag t-bal">{{ "Balanced" | t(lang.code) }}</span><div class="bar"><i style="width:45%"></i></div></div>
+      <div class="day strength"><span class="d">{{ "Fri" | t(lang.code) }}</span><b>{{ "Strength" | t(lang.code) }}<br>{{ "Full body" | t(lang.code) }}</b><span class="tag t-high">{{ "High protein" | t(lang.code) }}</span><div class="bar"><i style="width:90%"></i></div></div>
+      <div class="day walk"><span class="d">{{ "Sat" | t(lang.code) }}</span><b>{{ "Walk outside" | t(lang.code) }}</b><span class="tag t-light">{{ "Lighter" | t(lang.code) }}</span><div class="bar"><i style="width:35%"></i></div></div>
+      <div class="day rest"><span class="d">{{ "Sun" | t(lang.code) }}</span><b>{{ "Rest & stretch" | t(lang.code) }}</b><span class="tag t-light">{{ "Lighter" | t(lang.code) }}</span><div class="bar"><i style="width:15%"></i></div></div>
+    </div>
+    <div class="legend">
+      <span><i style="background:var(--green)"></i>{{ "3 strength days" | t(lang.code) }}</span>
+      <span><i style="background:var(--blue)"></i>{{ "2 low-impact cardio / mobility" | t(lang.code) }}</span>
+      <span><i style="background:#9bbf3a"></i>{{ "1 walk day" | t(lang.code) }}</span>
+      <span><i style="background:#c9c1aa"></i>{{ "1 rest & stretch" | t(lang.code) }}</span>
+      <span>{{ "Bar = effort level" | t(lang.code) }}</span>
+    </div>
+  </div>
+</section>
+
+<!-- Joint-friendly -->
+<section class="block">
+  <div class="wrap two">
+    <div>
+      <span class="eyebrow">{{ "Joint-friendly by default" | t(lang.code) }}</span>
+      <h2>{{ "No jumping, no equipment. Swap anything that hurts." | t(lang.code) }}</h2>
+      <p class="sub">{{ "Every exercise starts low impact and has an easier and a harder version. If something doesn't feel right, swap it in one tap and your plan stays balanced." | t(lang.code) }}</p>
+      <ul class="ticks">
+        <li>{{ "3–4 short form cues for every move" | t(lang.code) }}</li>
+        <li>{{ "The most common mistake, and how to avoid it" | t(lang.code) }}</li>
+        <li>{{ "A clear “stop if you feel…” note" | t(lang.code) }}</li>
+        <li>{{ "Simple, consistent line drawings for every exercise" | t(lang.code) }}</li>
+      </ul>
+    </div>
+    <div class="ex">
+      <div class="ex-top">
+        <div class="ex-fig">
+          <!-- simple line-art figure: reverse lunge -->
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="#16241c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="26" cy="9" r="5"/><path d="M26 14v16"/><path d="M26 19l-8 7M26 19l8 7"/><path d="M26 30l-8 12v8"/><path d="M26 30l12 8l2 12"/><path d="M6 50h44" stroke="#c9c1aa"/>
+          </svg>
+        </div>
+        <div><h3>{{ "Reverse lunge" | t(lang.code) }}</h3><div class="meta">{{ "Legs & glutes · 3 × 8 per side · Intermediate" | t(lang.code) }}</div></div>
+      </div>
+      <ol>
+        <li>{{ "Stand tall, hands on hips or a chair for balance." | t(lang.code) }}</li>
+        <li>{{ "Step one foot back and lower both knees gently." | t(lang.code) }}</li>
+        <li>{{ "Keep your front knee over your ankle." | t(lang.code) }}</li>
+        <li>{{ "Push through your front heel to stand up." | t(lang.code) }}</li>
+      </ol>
+      <div class="row mistake"><b>{{ "Common mistake:" | t(lang.code) }}</b> {{ "front knee drifting inward. Keep it in line with your toes." | t(lang.code) }}</div>
+      <div class="row stop"><b>{{ "Stop if" | t(lang.code) }}</b> {{ "you feel sharp pain in the knee or hip." | t(lang.code) }}</div>
+      <div class="swaps"><span class="easier">{{ "↓ Easier: Glute bridge" | t(lang.code) }}</span><span>{{ "↔ Swap: Supported split squat" | t(lang.code) }}</span><span>{{ "↑ Harder: Slow-tempo lunge" | t(lang.code) }}</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Weekly check-in -->
+<section class="block" id="checkin" style="padding-top:0">
+  <div class="wrap">
+    <div class="checkin">
+      <div>
+        <span class="eyebrow">{{ "Weekly check-in" | t(lang.code) }}</span>
+        <h2>{{ "60 seconds a week. No daily logging." | t(lang.code) }}</h2>
+        <p>{{ "Calorie counting wears people down. Instead, once a week we ask how you slept, how your energy was and whether anything hurt. Next week's plan adjusts to your answers." | t(lang.code) }}</p>
+      </div>
+      <div class="ci-card">
+        <h3>{{ "Sunday check-in" | t(lang.code) }}</h3>
+        <div class="meta">{{ "Week 3 · 3 questions" | t(lang.code) }}</div>
+        <div class="q"><label>{{ "How did you sleep?" | t(lang.code) }}</label><div class="scale"><span>{{ "Poor" | t(lang.code) }}</span><span>OK</span><span class="on">{{ "Good" | t(lang.code) }}</span><span>{{ "Great" | t(lang.code) }}</span></div></div>
+        <div class="q"><label>{{ "How was your energy?" | t(lang.code) }}</label><div class="scale"><span>{{ "Low" | t(lang.code) }}</span><span class="on">OK</span><span>{{ "Good" | t(lang.code) }}</span><span>{{ "High" | t(lang.code) }}</span></div></div>
+        <div class="q"><label>{{ "Any pain or discomfort?" | t(lang.code) }}</label><div class="scale"><span>{{ "None" | t(lang.code) }}</span><span class="on">{{ "Knee" | t(lang.code) }}</span><span>{{ "Back" | t(lang.code) }}</span><span>{{ "Other" | t(lang.code) }}</span></div></div>
+        <div class="result">{{ "✓ Next week: lunges swapped for glute bridges, and Thursday's mobility gets a knee-friendly flow." | t(lang.code) }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Recipes -->
+<section class="block" id="recipes" style="background:var(--sand)">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">{{ "Recipes" | t(lang.code) }}</span>
+      <h2>{{ "Real food from your local supermarket" | t(lang.code) }}</h2>
+      <p>{{ "Metric measurements, ingredients from Rewe, Edeka or Aldi, and meals that fit how you already eat, including a proper Abendbrot." | t(lang.code) }}</p>
+    </div>
+    <div class="recipes">
+      <article class="recipe">
+        <div class="art"><span class="tag t-high">{{ "Strength day" | t(lang.code) }}</span><div class="quark"></div></div>
+        <div class="body">
+          <span class="eyebrow">{{ "Breakfast · 5 min" | t(lang.code) }}</span>
+          <h3>{{ "Quark Bowl with Berries & Oats" | t(lang.code) }}</h3>
+          <p>{{ "250 g Magerquark, frozen berries, 30 g oats, a spoon of honey." | t(lang.code) }}</p>
+          <div class="macros"><span class="k">{{ "28 g protein" | t(lang.code) }}</span><span>390 kcal</span><span>{{ "Vegetarian" | t(lang.code) }}</span></div>
+        </div>
+      </article>
+      <article class="recipe">
+        <div class="art"><span class="tag t-high">{{ "Strength day" | t(lang.code) }}</span><div class="bowl"></div></div>
+        <div class="body">
+          <span class="eyebrow">{{ "Dinner · 20 min" | t(lang.code) }}</span>
+          <h3>{{ "Chicken & Lentil Pan with Peppers" | t(lang.code) }}</h3>
+          <p>{{ "150 g chicken breast, 1 can lentils, peppers, onion, paprika." | t(lang.code) }}</p>
+          <div class="macros"><span class="k">{{ "42 g protein" | t(lang.code) }}</span><span>560 kcal</span><span>{{ "Gluten-free" | t(lang.code) }}</span></div>
+        </div>
+      </article>
+      <article class="recipe">
+        <div class="art"><span class="tag t-light">{{ "Rest day" | t(lang.code) }}</span><div class="abendbrot"></div></div>
+        <div class="body">
+          <span class="eyebrow">{{ "Abendbrot · 10 min" | t(lang.code) }}</span>
+          <h3>{{ "Wholegrain Bread with Smoked Trout" | t(lang.code) }}</h3>
+          <p>{{ "2 slices Vollkornbrot, 100 g Hüttenkäse, smoked trout, cucumber, radishes." | t(lang.code) }}</p>
+          <div class="macros"><span class="k">{{ "34 g protein" | t(lang.code) }}</span><span>430 kcal</span><span>{{ "Pescatarian" | t(lang.code) }}</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Print -->
+<section class="block">
+  <div class="wrap two">
+    <div>
+      <span class="eyebrow">{{ "Print it, stick it on the fridge" | t(lang.code) }}</span>
+      <h2>{{ "Your week as a PDF, with the shopping list done" | t(lang.code) }}</h2>
+      <p class="sub">{{ "Every week you get a printable one-page plan and a shopping list sorted by supermarket section. One shop, and the whole week's meals are covered." | t(lang.code) }}</p>
+      <ul class="ticks">
+        <li>{{ "One-page weekly plan: workouts and meals side by side" | t(lang.code) }}</li>
+        <li>{{ "Shopping list grouped by aisle, quantities in grams" | t(lang.code) }}</li>
+        <li>{{ "Works without the app: no screen needed in the kitchen" | t(lang.code) }}</li>
+      </ul>
+    </div>
+    <div class="paper" aria-hidden="true">
+      <h3>{{ "Shopping list · Week 3" | t(lang.code) }}</h3>
+      <div class="meta">{{ "For 1 person · 7 days · approx. €48" | t(lang.code) }}</div>
+      <div class="aisle">{{ "Fruit & vegetables" | t(lang.code) }}</div>
+      <ul><li>{{ "Peppers, 3" | t(lang.code) }}</li><li>{{ "Cucumber, 1" | t(lang.code) }}</li><li>{{ "Radishes, 1 bunch" | t(lang.code) }}</li><li>{{ "Frozen berries, 500 g" | t(lang.code) }}</li></ul>
+      <div class="aisle">{{ "Dairy & chilled" | t(lang.code) }}</div>
+      <ul><li>{{ "Magerquark, 1 kg" | t(lang.code) }}</li><li>Hüttenkäse, 400 g</li><li>{{ "Eggs, 10" | t(lang.code) }}</li><li>{{ "Smoked trout, 125 g" | t(lang.code) }}</li></ul>
+      <div class="aisle">{{ "Meat & fish" | t(lang.code) }}</div>
+      <ul><li>{{ "Chicken breast, 600 g" | t(lang.code) }}</li><li>{{ "Salmon fillet, 250 g" | t(lang.code) }}</li></ul>
+      <div class="aisle">{{ "Pantry" | t(lang.code) }}</div>
+      <ul><li>{{ "Lentils, 2 cans" | t(lang.code) }}</li><li>{{ "Oats, 500 g" | t(lang.code) }}</li><li>{{ "Vollkornbrot, 1 loaf" | t(lang.code) }}</li><li>{{ "Wholegrain rice, 500 g" | t(lang.code) }}</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- Community -->
+<section class="block" id="crew" style="background:var(--sand)">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">{{ "You're not doing this alone" | t(lang.code) }}</span>
+      <h2>{{ "Join a small group of people at your stage" | t(lang.code) }}</h2>
+      <p>{{ "Small groups of peers keep each other going far better than an app on its own." | t(lang.code) }}</p>
+    </div>
+    <div class="crew">
+      <div class="c">
+        <div class="faces"><i style="background:var(--green)">A</i><i style="background:var(--tomato)">B</i><i style="background:var(--blue)">C</i><i style="background:#9bbf3a">D</i><i style="background:#c9c1aa;color:var(--ink)">+4</i></div>
+        <h3>{{ "Groups of 8" | t(lang.code) }}</h3>
+        <p>{{ "Matched by age, goal and starting level, so everyone is on a similar path." | t(lang.code) }}</p>
+      </div>
+      <div class="c">
+        <div class="faces"><i style="background:var(--green-2)">✓</i></div>
+        <h3>{{ "Shared weekly check-in" | t(lang.code) }}</h3>
+        <p>{{ "See who showed up this week and cheer each other on. No leaderboards, no comparing weights." | t(lang.code) }}</p>
+      </div>
+      <div class="c">
+        <div class="faces"><i style="background:var(--tomato)">?</i></div>
+        <h3>{{ "Questions answered" | t(lang.code) }}</h3>
+        <p>{{ "Ask your group, or ask why today's plan looks the way it does and get a plain-language explanation." | t(lang.code) }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trust -->
+<section class="block">
+  <div class="wrap">
+    <div class="trust">
+      <div class="badge">✓</div>
+      <div>
+        <h3>{{ "Reviewed by qualified experts" | t(lang.code) }}</h3>
+        <p>{{ "Every exercise is checked by a physiotherapist and every recipe by a dietitian before it goes into a plan." | t(lang.code) }} <span class="placeholder">{{ "[Add reviewer names, photos and credentials here]" | t(lang.code) }}</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-bottom:72px">
+  <div class="wrap">
+    <div class="cta">
+      <h2>{{ "Try a full week, free" | t(lang.code) }}</h2>
+      <p>{{ "Answer a few short questions and get a printable sample week with workouts, meals and your shopping list, by email." | t(lang.code) }}</p>
+      <a class="btn btn-primary" href="{{ lang.prefix }}build-my-plan.html">{{ "Get my free sample week" | t(lang.code) }}</a>
+    </div>
+  </div>
+</section>

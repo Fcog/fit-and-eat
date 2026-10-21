@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="{{ lang.code }}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title | t(lang.code) }}</title>
+{%- for l in languages %}
+<link rel="alternate" hreflang="{{ l.code }}" href="{{ l.prefix }}{{ pageFile }}">
+{%- endfor %}
+<link rel="alternate" hreflang="x-default" href="/{{ pageFile }}">
+<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/{{ css }}.css">
+</head>
+<body>
+{% if nav %}
+{% include "partials/nav.njk" %}
+{% endif %}
+{{ content | safe }}
+{% if footer %}
+{% include "partials/footer.njk" %}
+{% endif %}
+</body>
+</html>

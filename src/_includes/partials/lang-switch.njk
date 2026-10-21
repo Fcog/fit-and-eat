@@ -1,0 +1,3 @@
+<div class="lang-switch" role="navigation" aria-label="{{ 'Language' | t(lang.code) }}">
+  {%- for l in languages %}<a href="{{ l.prefix }}{{ pageFile }}?lang={{ l.code }}" hreflang="{{ l.code }}" lang="{{ l.code }}"{% if l.code == lang.code %} aria-current="true"{% endif %}>{{ l.label }}</a>{% endfor -%}
+</div>

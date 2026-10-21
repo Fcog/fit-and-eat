@@ -1,0 +1,202 @@
+---
+pagination:
+  data: languages
+  size: 1
+  alias: lang
+permalink: "{{ lang.prefix }}build-my-plan.html"
+layout: layouts/base.njk
+title: "Free Sample Week — Fit & Eat"
+pageFile: "build-my-plan.html"
+css: form
+nav: true
+navButton: "home"
+footer: "simple"
+---
+<main class="wrap layout">
+  <div>
+    <div class="intro">
+      <span class="eyebrow">{{ "Free sample week" | t(lang.code) }}</span>
+      <h1>{{ "Tell us a little about you" | t(lang.code) }}</h1>
+      <p>{{ "10 short questions. We'll send you a printable week of workouts and matching meals, plus your shopping list." | t(lang.code) }}</p>
+    </div>
+
+    <form action="/api/submit-plan" method="post">
+      <input type="hidden" name="lang" value="{{ lang.code }}">
+      <!-- Spam trap: hidden from people, bots fill it in -->
+      <p style="position:absolute;left:-9999px" aria-hidden="true"><label>{{ "Company" | t(lang.code) }} <input type="text" name="company" tabindex="-1" autocomplete="off"></label></p>
+
+      <!-- 1 -->
+      <fieldset>
+        <legend><span class="n">1</span>{{ "About you" | t(lang.code) }}</legend>
+        <div class="grid2">
+          <label class="f">{{ "First name" | t(lang.code) }}
+            <input type="text" name="name" placeholder="{{ "e.g. Sabine" | t(lang.code) }}" required autocomplete="given-name">
+          </label>
+          <label class="f">{{ "Email" | t(lang.code) }} <small style="font-weight:400;color:var(--muted)">{{ "(we send your PDF here)" | t(lang.code) }}</small>
+            <input type="email" name="email" placeholder="{{ "you@example.com" | t(lang.code) }}" required autocomplete="email">
+          </label>
+        </div>
+        <p class="sub">{{ "Your age" | t(lang.code) }}</p>
+        <div class="choices c5">
+          <label class="choice pill"><input type="radio" name="age" value="u40"><span class="box">{{ "Under 40" | t(lang.code) }}</span></label>
+          <label class="choice pill"><input type="radio" name="age" value="40s" required><span class="box">40–49</span></label>
+          <label class="choice pill"><input type="radio" name="age" value="50s"><span class="box">50–59</span></label>
+          <label class="choice pill"><input type="radio" name="age" value="60s"><span class="box">60–69</span></label>
+          <label class="choice pill"><input type="radio" name="age" value="70plus"><span class="box">70+</span></label>
+        </div>
+      </fieldset>
+
+      <!-- 2 -->
+      <fieldset>
+        <legend><span class="n">2</span>{{ "What matters most to you?" | t(lang.code) }}</legend>
+        <div class="choices c3">
+          <label class="choice"><input type="radio" name="track" value="stronger" required><span class="box"><span class="ico">↑</span><b>{{ "Get stronger" | t(lang.code) }}</b><small>{{ "Build and keep muscle, feel capable" | t(lang.code) }}</small></span></label>
+          <label class="choice"><input type="radio" name="track" value="weight"><span class="box"><span class="ico">↓</span><b>{{ "Lose weight, keep muscle" | t(lang.code) }}</b><small>{{ "Slim down without losing strength" | t(lang.code) }}</small></span></label>
+          <label class="choice"><input type="radio" name="track" value="move"><span class="box"><span class="ico">∿</span><b>{{ "Move without pain" | t(lang.code) }}</b><small>{{ "Mobility, balance, easier everyday life" | t(lang.code) }}</small></span></label>
+        </div>
+      </fieldset>
+
+      <!-- 3 -->
+      <fieldset>
+        <legend><span class="n">3</span>{{ "Where are you starting from?" | t(lang.code) }}</legend>
+        <div class="choices c3">
+          <label class="choice"><input type="radio" name="level" value="beginner" required><span class="box"><b>{{ "Just starting" | t(lang.code) }}</b><small>{{ "Little or no exercise lately" | t(lang.code) }}</small></span></label>
+          <label class="choice"><input type="radio" name="level" value="some"><span class="box"><b>{{ "Somewhat active" | t(lang.code) }}</b><small>{{ "Walk or train now and then" | t(lang.code) }}</small></span></label>
+          <label class="choice"><input type="radio" name="level" value="active"><span class="box"><b>{{ "Regularly active" | t(lang.code) }}</b><small>{{ "Exercise 2+ times a week" | t(lang.code) }}</small></span></label>
+        </div>
+      </fieldset>
+
+      <!-- 4 -->
+      <fieldset>
+        <legend><span class="n">4</span>{{ "Anything that limits you?" | t(lang.code) }}</legend>
+        <p class="hint">{{ "We'll leave out moves that load these areas and give you joint-friendly swaps. Pick any." | t(lang.code) }}</p>
+        <div class="choices c4">
+          <label class="choice pill"><input type="checkbox" name="limit" value="knees"><span class="box">{{ "Knees" | t(lang.code) }}</span></label>
+          <label class="choice pill"><input type="checkbox" name="limit" value="hips"><span class="box">{{ "Hips" | t(lang.code) }}</span></label>
+          <label class="choice pill"><input type="checkbox" name="limit" value="back"><span class="box">{{ "Lower back" | t(lang.code) }}</span></label>
+          <label class="choice pill"><input type="checkbox" name="limit" value="shoulders"><span class="box">{{ "Shoulders" | t(lang.code) }}</span></label>
+          <label class="choice pill"><input type="checkbox" name="limit" value="wrists"><span class="box">{{ "Wrists" | t(lang.code) }}</span></label>
+          <label class="choice pill"><input type="checkbox" name="limit" value="balance"><span class="box">{{ "Balance" | t(lang.code) }}</span></label>
+          <label class="choice pill"><input type="checkbox" name="limit" value="floor"><span class="box">{{ "Getting up from the floor" | t(lang.code) }}</span></label>
+          <label class="choice pill"><input type="checkbox" name="limit" value="none"><span class="box">{{ "Nothing" | t(lang.code) }}</span></label>
+        </div>
+      </fieldset>
+
+      <!-- 5 -->
+      <fieldset>
+        <legend><span class="n">5</span>{{ "What equipment do you have?" | t(lang.code) }}</legend>
+        <div class="choices c4">
+          <label class="choice pill"><input type="checkbox" name="equip" value="none" checked><span class="box">{{ "Nothing" | t(lang.code) }}<span class="badge">{{ "Default" | t(lang.code) }}</span></span></label>
+          <label class="choice pill"><input type="checkbox" name="equip" value="chair"><span class="box">{{ "Sturdy chair" | t(lang.code) }}</span></label>
+          <label class="choice pill"><input type="checkbox" name="equip" value="band"><span class="box">{{ "Resistance band" | t(lang.code) }}</span></label>
+          <label class="choice pill"><input type="checkbox" name="equip" value="dumbbells"><span class="box">{{ "Dumbbells" | t(lang.code) }}</span></label>
+        </div>
+      </fieldset>
+
+      <!-- 6 -->
+      <fieldset>
+        <legend><span class="n">6</span>{{ "How much time on a normal day?" | t(lang.code) }}</legend>
+        <p class="hint">{{ "This is your usual length. On busy days you can always switch to a shorter version." | t(lang.code) }}</p>
+        <div class="choices c3">
+          <label class="choice"><input type="radio" name="time" value="10"><span class="box"><b>{{ "10 minutes" | t(lang.code) }}</b><small>{{ "Short and steady" | t(lang.code) }}</small></span></label>
+          <label class="choice"><input type="radio" name="time" value="20"><span class="box"><b>{{ "20 minutes" | t(lang.code) }}</b><small>{{ "A solid middle ground" | t(lang.code) }}</small></span></label>
+          <label class="choice"><input type="radio" name="time" value="30" checked><span class="box"><b>{{ "30 minutes" | t(lang.code) }}</b><small>{{ "The full session" | t(lang.code) }}</small></span></label>
+        </div>
+      </fieldset>
+
+      <!-- 7 -->
+      <fieldset>
+        <legend><span class="n">7</span>{{ "How do you eat?" | t(lang.code) }}</legend>
+        <div class="choices c4">
+          <label class="choice pill"><input type="radio" name="diet" value="all" checked><span class="box">{{ "Everything" | t(lang.code) }}</span></label>
+          <label class="choice pill"><input type="radio" name="diet" value="flexitarian"><span class="box">{{ "Less meat" | t(lang.code) }}</span></label>
+          <label class="choice pill"><input type="radio" name="diet" value="pescatarian"><span class="box">{{ "Pescatarian" | t(lang.code) }}</span></label>
+          <label class="choice pill"><input type="radio" name="diet" value="vegetarian"><span class="box">{{ "Vegetarian" | t(lang.code) }}</span></label>
+          <label class="choice pill"><input type="radio" name="diet" value="vegan"><span class="box">{{ "Vegan" | t(lang.code) }}</span></label>
+          <label class="choice pill"><input type="radio" name="diet" value="pork"><span class="box">{{ "No pork" | t(lang.code) }}</span></label>
+        </div>
+        <p class="sub">{{ "How long can you spend cooking dinner?" | t(lang.code) }}</p>
+        <div class="choices c3">
+          <label class="choice pill"><input type="radio" name="cook" value="15"><span class="box">{{ "15 min" | t(lang.code) }}</span></label>
+          <label class="choice pill"><input type="radio" name="cook" value="30" checked><span class="box">{{ "30 min" | t(lang.code) }}</span></label>
+          <label class="choice pill"><input type="radio" name="cook" value="45"><span class="box">{{ "45 min" | t(lang.code) }}</span></label>
+        </div>
+      </fieldset>
+
+      <!-- 8 -->
+      <fieldset>
+        <legend><span class="n">8</span>{{ "Allergies or foods to avoid" | t(lang.code) }}</legend>
+        <div class="choices c4">
+          <label class="choice pill"><input type="checkbox" name="avoid" value="gluten"><span class="box">Gluten</span></label>
+          <label class="choice pill"><input type="checkbox" name="avoid" value="lactose"><span class="box">{{ "Lactose" | t(lang.code) }}</span></label>
+          <label class="choice pill"><input type="checkbox" name="avoid" value="nuts"><span class="box">{{ "Nuts" | t(lang.code) }}</span></label>
+          <label class="choice pill"><input type="checkbox" name="avoid" value="eggs"><span class="box">{{ "Eggs" | t(lang.code) }}</span></label>
+          <label class="choice pill"><input type="checkbox" name="avoid" value="fish"><span class="box">{{ "Fish & seafood" | t(lang.code) }}</span></label>
+          <label class="choice pill"><input type="checkbox" name="avoid" value="soy"><span class="box">{{ "Soy" | t(lang.code) }}</span></label>
+          <label class="choice pill"><input type="checkbox" name="avoid" value="none"><span class="box">{{ "None" | t(lang.code) }}</span></label>
+        </div>
+        <label class="f" style="margin-top:16px">{{ "Foods you just don't like" | t(lang.code) }} <small style="font-weight:400;color:var(--muted)">{{ "(optional)" | t(lang.code) }}</small>
+          <input type="text" name="dislikes" placeholder="{{ "e.g. mushrooms, olives" | t(lang.code) }}">
+        </label>
+      </fieldset>
+
+      <!-- 9 -->
+      <fieldset>
+        <legend><span class="n">9</span>{{ "Quick health check" | t(lang.code) }}</legend>
+        <p class="hint">{{ "Tick any that apply to you. This keeps your plan safe; it doesn't stop you from getting one." | t(lang.code) }}</p>
+        <div class="flags">
+          <label class="flag"><input type="checkbox" class="red" name="flag" value="heart">{{ "A doctor has told me I have a heart condition or high blood pressure" | t(lang.code) }}</label>
+          <label class="flag"><input type="checkbox" class="red" name="flag" value="chest">{{ "I get chest pain, or feel faint or dizzy, when active" | t(lang.code) }}</label>
+          <label class="flag"><input type="checkbox" class="red" name="flag" value="surgery">{{ "I had surgery, a fracture or a serious injury in the last 6 months" | t(lang.code) }}</label>
+          <label class="flag"><input type="checkbox" class="red" name="flag" value="joint">{{ "I have joint or bone problems that get worse with exercise" | t(lang.code) }}</label>
+          <label class="flag"><input type="checkbox" class="red" name="flag" value="meds">{{ "I take medication that affects my heart rate, blood pressure or balance" | t(lang.code) }}</label>
+          <label class="flag"><input type="checkbox" class="red" name="flag" value="pregnant">{{ "I am pregnant or gave birth in the last 6 months" | t(lang.code) }}</label>
+          <label class="flag none"><input type="checkbox" name="flag" value="none">{{ "None of these apply to me" | t(lang.code) }}</label>
+        </div>
+        <div class="doctor"><b>{{ "Please check with your doctor first." | t(lang.code) }}</b> {{ "You'll still get your sample week, but talk to your doctor before you start, and we'll keep your plan at the gentlest level until you confirm it's OK." | t(lang.code) }}</div>
+      </fieldset>
+
+      <!-- 10 -->
+      <fieldset>
+        <legend><span class="n">10</span>{{ "Would you like a group?" | t(lang.code) }}</legend>
+        <div class="choices c2">
+          <label class="choice"><input type="radio" name="group" value="yes"><span class="box"><b>{{ "Yes, add me to a group" | t(lang.code) }}</b><small>{{ "8 people of your age and goal, weekly shared check-in" | t(lang.code) }}</small></span></label>
+          <label class="choice"><input type="radio" name="group" value="no" checked><span class="box"><b>{{ "Not for now" | t(lang.code) }}</b><small>{{ "You can join a group anytime later" | t(lang.code) }}</small></span></label>
+        </div>
+      </fieldset>
+
+      <!-- Consent -->
+      <fieldset>
+        <legend>{{ "Your consent" | t(lang.code) }}</legend>
+        <div style="clear:both;display:flex;flex-direction:column;gap:12px">
+          <label class="consent"><input type="checkbox" name="health_consent" required><span><b>{{ "I consent to Fit & Eat processing my health information" | t(lang.code) }}</b> {{ "(physical limitations and health check answers) to create my plan. I can withdraw this consent at any time." | t(lang.code) }}</span></label>
+          <label class="consent"><input type="checkbox" name="terms" required><span>{{ "I have read the Privacy Policy and agree to the Terms." | t(lang.code) }}</span></label>
+          <label class="consent"><input type="checkbox" name="newsletter"><span>{{ "Send me a weekly email with new recipes and tips (optional)." | t(lang.code) }}</span></label>
+        </div>
+      </fieldset>
+
+      <div class="actions">
+        <a class="btn btn-ghost" href="{{ lang.prefix }}">{{ "Cancel" | t(lang.code) }}</a>
+        <button class="btn btn-primary" type="submit">{{ "Send my free sample week →" | t(lang.code) }}</button>
+      </div>
+    </form>
+  </div>
+
+  <aside>
+    <div class="side">
+      <h3>{{ "In your sample week" | t(lang.code) }}</h3>
+      <ul>
+        <li>{{ "7 days on the same rhythm: 3 strength, 2 cardio or mobility, 1 walk, 1 rest" | t(lang.code) }}</li>
+        <li>{{ "Each workout in 10, 20 and 30 minute versions" | t(lang.code) }}</li>
+        <li>{{ "Meals matched to each day's effort" | t(lang.code) }}</li>
+        <li>{{ "Printable PDF + shopping list sorted by aisle" | t(lang.code) }}</li>
+        <li>{{ "Joint-friendly swaps for every exercise" | t(lang.code) }}</li>
+      </ul>
+    </div>
+    <div class="privacy">
+      <h4>{{ "Your data stays private" | t(lang.code) }}</h4>
+      {{ "Health details are only used to build your plan. They're never sold or shared, and you can delete them at any time." | t(lang.code) }}
+    </div>
+    <div class="time">{{ "⏱ Takes about" | t(lang.code) }} <b>{{ "2 minutes" | t(lang.code) }}</b></div>
+  </aside>
+</main>

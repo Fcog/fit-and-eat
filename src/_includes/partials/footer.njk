@@ -1,0 +1,14 @@
+<footer>
+  <div class="wrap">
+    {%- if footer == "full" %}
+    <span style="display:flex;align-items:center;gap:14px">{% include "partials/logo-full.njk" %}
+<span><b style="color:var(--ink)">Fit &amp; Eat</b> · © 2026 · Demo</span></span>
+    {%- else %}
+    <span><b style="color:var(--ink)">Fit &amp; Eat</b> · © 2026 · Demo</span>
+    {%- endif %}
+    <span>{{ "About · Privacy · Imprint · Terms" | t(lang.code) }}</span>
+    {%- if footer == "full" %}
+    <span class="disc">Fit &amp; {{ "Eat provides general fitness and nutrition guidance, not medical advice. Please talk to your doctor before starting a new exercise programme, especially if you have a health condition." | t(lang.code) }}</span>
+    {%- endif %}
+  </div>
+</footer>

@@ -1,6 +1,7 @@
 // Receives the "Free sample week" form (build-my-plan.html),
 // saves it to Netlify Database, then sends the visitor to plan-ready.html.
 import { getDatabase } from "@netlify/database";
+import { notifyNewRequest } from "../lib/notify-email.mjs";
 
 const db = getDatabase();
 
@@ -28,6 +29,13 @@ const text = (form, key, max) => {
   return v ? v.slice(0, max) : null;
 };
 
+const MESSAGES = {
+  en: { invalid: "Please go back and fill in your name, a valid email, and both consent boxes.", error: "Sorry, something went wrong. Please try again in a moment." },
+  de: { invalid: "Bitte geh zurück und gib deinen Namen, eine gültige E-Mail-Adresse und beide Einwilligungen an.", error: "Entschuldigung, da ist etwas schiefgelaufen. Bitte versuch es gleich noch einmal." },
+  nl: { invalid: "Ga terug en vul je naam, een geldig e-mailadres en beide toestemmingen in.", error: "Sorry, er ging iets mis. Probeer het zo nog eens." },
+};
+const thanksPage = (lang) => (lang === "en" ? "/plan-ready.html" : `/${lang}/plan-ready.html`);
+
 const redirect = (location) => new Response(null, { status: 303, headers: { Location: location } });
 
 export default async (req) => {
@@ -42,8 +50,10 @@ export default async (req) => {
     return new Response("Invalid form data", { status: 400 });
   }
 
+  const lang = ["en", "de", "nl"].includes(form.get("lang")) ? form.get("lang") : "en";
+
   // Spam trap: real visitors never see or fill this field.
-  if (text(form, "company", 100)) return redirect("/plan-ready.html");
+  if (text(form, "company", 100)) return redirect(thanksPage(lang));
 
   const firstName = text(form, "name", 80);
   const email = text(form, "email", 200);
@@ -52,15 +62,33 @@ export default async (req) => {
 
   if (!firstName || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !healthConsent || !terms) {
     return new Response(
-      "Please go back and fill in your name, a valid email, and both consent boxes.",
+      MESSAGES[lang].invalid,
       { status: 400, headers: { "Content-Type": "text/plain; charset=utf-8" } }
     );
   }
 
   const healthFlags = many(form, "flag");
-  const needsDoctor = healthFlags.some((f) => f !== "none");
   const minutes = one(form, "time");
   const cook = one(form, "cook");
+  const entry = {
+    firstName,
+    email: email.toLowerCase(),
+    lang,
+    age: one(form, "age"),
+    track: one(form, "track"),
+    level: one(form, "level"),
+    limitations: many(form, "limit"),
+    equipment: many(form, "equip"),
+    minutes: minutes ? Number(minutes) : null,
+    diet: one(form, "diet"),
+    cook: cook ? Number(cook) : null,
+    allergies: many(form, "avoid"),
+    dislikes: text(form, "dislikes", 300),
+    healthFlags,
+    needsDoctor: healthFlags.some((f) => f !== "none"),
+    wantsGroup: form.get("group") === "yes",
+    newsletter: form.get("newsletter") === "on",
+  };
 
   try {
     await db.sql`
@@ -69,24 +97,31 @@ export default async (req) => {
         limitations, equipment, daily_minutes,
         diet, cook_minutes, allergies, dislikes,
         health_flags, needs_doctor, wants_group,
-        health_consent, terms_accepted, newsletter
+        health_consent, terms_accepted, newsletter, lang
       ) VALUES (
-        ${firstName}, ${email.toLowerCase()}, ${one(form, "age")}, ${one(form, "track")}, ${one(form, "level")},
-        ${JSON.stringify(many(form, "limit"))}::jsonb, ${JSON.stringify(many(form, "equip"))}::jsonb, ${minutes ? Number(minutes) : null},
-        ${one(form, "diet")}, ${cook ? Number(cook) : null}, ${JSON.stringify(many(form, "avoid"))}::jsonb, ${text(form, "dislikes", 300)},
-        ${JSON.stringify(healthFlags)}::jsonb, ${needsDoctor}, ${form.get("group") === "yes"},
-        ${healthConsent}, ${terms}, ${form.get("newsletter") === "on"}
+        ${entry.firstName}, ${entry.email}, ${entry.age}, ${entry.track}, ${entry.level},
+        ${JSON.stringify(entry.limitations)}::jsonb, ${JSON.stringify(entry.equipment)}::jsonb, ${entry.minutes},
+        ${entry.diet}, ${entry.cook}, ${JSON.stringify(entry.allergies)}::jsonb, ${entry.dislikes},
+        ${JSON.stringify(entry.healthFlags)}::jsonb, ${entry.needsDoctor}, ${entry.wantsGroup},
+        ${healthConsent}, ${terms}, ${entry.newsletter}, ${entry.lang}
       )
     `;
   } catch (err) {
     console.error("Could not save plan request:", err);
-    return new Response("Sorry, something went wrong. Please try again in a moment.", {
+    return new Response(MESSAGES[lang].error, {
       status: 500,
       headers: { "Content-Type": "text/plain; charset=utf-8" },
     });
   }
 
-  return redirect("/plan-ready.html");
+  // Email the team. The request is already saved, so a failed email never blocks the visitor.
+  try {
+    await notifyNewRequest(entry);
+  } catch (err) {
+    console.error("Could not send notification email:", err);
+  }
+
+  return redirect(thanksPage(lang));
 };
 
 export const config = {

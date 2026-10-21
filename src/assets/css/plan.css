@@ -1,0 +1,61 @@
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+  .btn{display:inline-block;padding:12px 22px;border-radius:999px;font-weight:600;font-size:15px;border:1.5px solid var(--ink)}
+  .btn-primary{background:var(--green);color:#fff;border-color:var(--green)}
+  .done{text-align:center;padding:56px 0 40px}
+  .check{width:68px;height:68px;border-radius:50%;background:var(--lime);color:var(--green);display:grid;place-items:center;font-size:32px;font-weight:800;margin:0 auto 18px}
+  .done h1{font-size:clamp(30px,5vw,42px);letter-spacing:-.02em;line-height:1.1;margin-bottom:10px}
+  .done p{color:var(--muted);max-width:560px;margin:0 auto 22px}
+  .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .print-hint{font-size:13px;color:var(--muted);margin-top:14px}
+  .sheet{background:#fff;border:1px solid var(--line);border-radius:18px;padding:36px;margin-bottom:28px}
+  .sheet-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:18px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px}
+  .sheet h2{font-size:24px;letter-spacing:-.02em}
+  .sheet .meta{font-size:13px;color:var(--muted)}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:8px 10px;border-bottom:1px solid var(--line)}
+  td{padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  td.day{font-weight:800;width:56px}
+  .wk b{display:block}
+  .wk small{color:var(--muted)}
+  .type{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px}
+  .meals div{margin-bottom:3px;display:grid;grid-template-columns:70px 1fr;gap:4px}
+  .meals span{color:var(--muted);font-size:12px;padding-top:1px}
+  .tag{display:inline-block;font-size:11px;font-weight:700;padding:3px 8px;border-radius:999px;white-space:nowrap}
+  .t-high{background:#fbe5df;color:#b5381f}
+  .t-bal{background:#e1ecf6;color:#25609a}
+  .t-light{background:#eef6d4;color:#4d6a0e}
+  .prot{font-weight:700;white-space:nowrap}
+  .why{margin-top:16px;font-size:13px;color:var(--muted);background:var(--bg);border-radius:12px;padding:12px 14px}
+  .list{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .aisle{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--green-2);margin-bottom:8px}
+  .list ul{list-style:none;font-size:14px;display:flex;flex-direction:column;gap:5px}
+  .list li::before{content:"☐ ";color:var(--muted)}
+  .next{text-align:center;padding:10px 0 64px;color:var(--muted);font-size:15px}
+  .next b{color:var(--ink)}
+  .disc{font-size:12px;color:var(--muted);margin-top:16px}
+  @media (max-width:760px){
+    .sheet{padding:22px 16px}
+    .list{grid-template-columns:repeat(2,1fr)}
+    table, tbody, tr, td{display:block;width:100%}
+    thead{display:none}
+    tr{border-bottom:1px solid var(--line);padding:10px 0}
+    td{border:0;padding:4px 0}
+    td.day{width:auto}
+  }
+  @media print{
+    @page{size:A4;margin:12mm}
+    body{background:#fff}
+    .no-print{display:none !important}
+    .sheet{border:0;padding:0;margin:0 0 0;border-radius:0}
+    .sheet + .sheet{page-break-before:always}
+    .tag,.type{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+  /* Blurred preview */
+  .locked{position:relative}
+  .locked tbody td:not(.day){filter:blur(4.5px);user-select:none;pointer-events:none}
+  .lock-card{position:absolute;left:50%;top:50%;transform:translate(-50%,-40%);width:min(440px,90%);background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px 26px;text-align:center;box-shadow:0 24px 48px -20px rgba(22,36,28,.35)}
+  .lock-card .ico{width:52px;height:52px;border-radius:50%;background:var(--lime);color:var(--green);display:grid;place-items:center;font-size:22px;margin:0 auto 12px}
+  .lock-card h3{font-size:21px;letter-spacing:-.01em;margin-bottom:8px}
+  .lock-card p{font-size:15px;color:var(--muted)}

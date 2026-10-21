@@ -1,0 +1,23 @@
+<nav>
+  <div class="wrap">
+    <a class="logo" href="{{ lang.prefix }}" aria-label="{{ 'Fit & Eat home' | t(lang.code) }}">
+      {% include "partials/logo-icon.njk" %}
+      Fit &amp; Eat
+    </a>
+    <div class="links">
+      <a href="{% if pageFile %}{{ lang.prefix }}{% endif %}#how">{{ "How it works" | t(lang.code) }}</a>
+      <a href="{% if pageFile %}{{ lang.prefix }}{% endif %}#week">{{ "Your week" | t(lang.code) }}</a>
+      <a href="{% if pageFile %}{{ lang.prefix }}{% endif %}#checkin">{{ "Check-in" | t(lang.code) }}</a>
+      <a href="{% if pageFile %}{{ lang.prefix }}{% endif %}#recipes">{{ "Recipes" | t(lang.code) }}</a>
+      <a href="{% if pageFile %}{{ lang.prefix }}{% endif %}#crew">{{ "Community" | t(lang.code) }}</a>
+    </div>
+    <div class="nav-right">
+      {% include "partials/lang-switch.njk" %}
+      {%- if navButton == "home" %}
+      <a class="btn btn-ghost" href="{{ lang.prefix }}">{{ "← Back home" | t(lang.code) }}</a>
+      {%- else %}
+      <a class="btn btn-primary" href="{{ lang.prefix }}build-my-plan.html">{{ "Free sample week" | t(lang.code) }}</a>
+      {%- endif %}
+    </div>
+  </div>
+</nav>
